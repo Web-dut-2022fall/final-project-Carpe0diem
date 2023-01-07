@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% block title %} {% endblock title %}
+{% block content %}
+ <div class="container">
+    <h1>Blog</h1>
+    {% for blog in blogs  %}
+    <hr>
+    <h4>{{blog.title}}</h4>
+    <p class="text-justify">{{blog.content}}</p>
+    <h4>作者:{{blog.author.username}} </h4>
+
+    <a href="{% url 'edit' id=blog.id %}"><button class="btn btn-primary">编辑</button></a>
+    <a href="{% url 'delete' id=blog.id %}"><button class="btn btn-primary">删除</button></a>
+    {% endfor %}
+    <br>
+    <br>
+    <a href="{% url 'add' %}"><button class="btn btn-primary">写文章</button></a>
+    
+ </div>
+
+ {% endblock content %}
